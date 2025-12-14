@@ -28,15 +28,29 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
               <div className="relative flex h-full">
                 <Popover.Button
                   data-testid="nav-menu-button"
-                  className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
+                  className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-amber-700 p-2"
                 >
-                  Menu
+                  {/* Burger Icon */}
+                  <div className="flex flex-col gap-1.5 w-6">
+                    <span className={clx(
+                      "block h-0.5 w-6 bg-stone-600 transition-all duration-300",
+                      open ? "rotate-45 translate-y-2" : ""
+                    )}></span>
+                    <span className={clx(
+                      "block h-0.5 w-6 bg-stone-600 transition-all duration-300",
+                      open ? "opacity-0" : ""
+                    )}></span>
+                    <span className={clx(
+                      "block h-0.5 w-6 bg-stone-600 transition-all duration-300",
+                      open ? "-rotate-45 -translate-y-2" : ""
+                    )}></span>
+                  </div>
                 </Popover.Button>
               </div>
 
               {open && (
                 <div
-                  className="fixed inset-0 z-[50] bg-black/0 pointer-events-auto"
+                  className="fixed inset-0 z-[50] bg-black/40 backdrop-blur-sm pointer-events-auto"
                   onClick={close}
                   data-testid="side-menu-backdrop"
                 />
@@ -45,30 +59,37 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
               <Transition
                 show={open}
                 as={Fragment}
-                enter="transition ease-out duration-150"
-                enterFrom="opacity-0"
-                enterTo="opacity-100 backdrop-blur-2xl"
-                leave="transition ease-in duration-150"
-                leaveFrom="opacity-100 backdrop-blur-2xl"
-                leaveTo="opacity-0"
+                enter="transition ease-out duration-300"
+                enterFrom="-translate-x-full"
+                enterTo="translate-x-0"
+                leave="transition ease-in duration-200"
+                leaveFrom="translate-x-0"
+                leaveTo="-translate-x-full"
               >
-                <PopoverPanel className="flex flex-col absolute w-full pr-4 sm:pr-0 sm:w-1/3 2xl:w-1/4 sm:min-w-min h-[calc(100vh-1rem)] z-[51] inset-x-0 text-sm text-ui-fg-on-color m-2 backdrop-blur-2xl">
+                <PopoverPanel className="fixed left-0 top-0 w-80 sm:w-96 h-screen z-[51] bg-white shadow-2xl overflow-y-auto">
                   <div
                     data-testid="nav-menu-popup"
-                    className="flex flex-col h-full bg-[rgba(3,7,18,0.5)] rounded-rounded justify-between p-6"
+                    className="flex flex-col min-h-full p-8 bg-white"
                   >
-                    <div className="flex justify-end" id="xmark">
-                      <button data-testid="close-menu-button" onClick={close}>
-                        <XMark />
+                    {/* Close Button */}
+                    <div className="flex justify-end mb-8" id="xmark">
+                      <button
+                        data-testid="close-menu-button"
+                        onClick={close}
+                        className="p-2 hover:bg-stone-100 rounded-full transition-colors"
+                      >
+                        <XMark className="text-stone-600" />
                       </button>
                     </div>
-                    <ul className="flex flex-col gap-6 items-start justify-start">
+
+                    {/* Menu Items */}
+                    <ul className="flex flex-col gap-6 items-start justify-start mb-auto">
                       {Object.entries(SideMenuItems).map(([name, href]) => {
                         return (
                           <li key={name}>
                             <LocalizedClientLink
                               href={href}
-                              className="text-3xl leading-10 hover:text-ui-fg-disabled"
+                              className="text-3xl font-light text-stone-800 hover:text-amber-700 transition-colors duration-300 tracking-wide"
                               onClick={close}
                               data-testid={`${name.toLowerCase()}-link`}
                             >
@@ -78,9 +99,11 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                         )
                       })}
                     </ul>
-                    <div className="flex flex-col gap-y-6">
+
+                    {/* Footer Section */}
+                    <div className="flex flex-col gap-y-6 pt-8 border-t border-stone-200">
                       <div
-                        className="flex justify-between"
+                        className="flex justify-between items-center"
                         onMouseEnter={toggleState.open}
                         onMouseLeave={toggleState.close}
                       >
@@ -92,14 +115,13 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                         )}
                         <ArrowRightMini
                           className={clx(
-                            "transition-transform duration-150",
+                            "transition-transform duration-150 text-stone-600",
                             toggleState.state ? "-rotate-90" : ""
                           )}
                         />
                       </div>
-                      <Text className="flex justify-between txt-compact-small">
-                        © {new Date().getFullYear()} Medusa Store. All rights
-                        reserved.
+                      <Text className="text-xs text-stone-500">
+                        © {new Date().getFullYear()} Azores Bloom Candles. All rights reserved.
                       </Text>
                     </div>
                   </div>

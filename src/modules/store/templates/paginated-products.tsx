@@ -15,13 +15,13 @@ type PaginatedProductsParams = {
 }
 
 export default async function PaginatedProducts({
-  sortBy,
-  page,
-  collectionId,
-  categoryId,
-  productsIds,
-  countryCode,
-}: {
+                                                  sortBy,
+                                                  page,
+                                                  collectionId,
+                                                  categoryId,
+                                                  productsIds,
+                                                  countryCode,
+                                                }: {
   sortBy?: SortOptions
   page: number
   collectionId?: string
@@ -67,26 +67,39 @@ export default async function PaginatedProducts({
   const totalPages = Math.ceil(count / PRODUCT_LIMIT)
 
   return (
-    <>
-      <ul
-        className="grid grid-cols-2 w-full small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8"
-        data-testid="products-list"
-      >
-        {products.map((p) => {
-          return (
-            <li key={p.id}>
-              <ProductPreview product={p} region={region} />
+    <section className="w-full bg-gradient-to-b from-stone-50 to-amber-50/30 py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-light tracking-wider text-stone-800 mb-4">
+            OUR SIGNATURE CREATIONS
+          </h2>
+          <p className="text-lg text-stone-600 font-light">Featured Products</p>
+        </div>
+
+        {/* Products Grid */}
+        <ul
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          data-testid="products-list"
+        >
+          {products.map((product) => (
+            <li key={product.id}>
+              <ProductPreview product={product} region={region} />
             </li>
-          )
-        })}
-      </ul>
-      {totalPages > 1 && (
-        <Pagination
-          data-testid="product-pagination"
-          page={page}
-          totalPages={totalPages}
-        />
-      )}
-    </>
+          ))}
+        </ul>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="mt-16">
+            <Pagination
+              data-testid="product-pagination"
+              page={page}
+              totalPages={totalPages}
+            />
+          </div>
+        )}
+      </div>
+    </section>
   )
 }

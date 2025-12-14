@@ -2,21 +2,33 @@ import { Metadata } from "next"
 
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
+import AboutSection from "@modules/home/components/about-section"
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
+import PaginatedProducts from "@modules/store/templates/paginated-products"
+import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import Divider from "@modules/common/components/divider"
 
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
+  title: "Azores Bloom Candles",
   description:
-    "A performant frontend ecommerce starter template with Next.js 15 and Medusa.",
+    "Handcrafted artisan candles made with premium soy wax and natural fragrances. Each candle is hand-poured with love in California.",
 }
 
-export default async function Home(props: {
+type Props = {
   params: Promise<{ countryCode: string }>
-}) {
+  searchParams: Promise<{
+    page?: string
+    sortBy?: SortOptions
+  }>
+}
+
+export default async function Home(props: Props) {
   const params = await props.params
+  const searchParams = await props.searchParams
 
   const { countryCode } = params
+  const { sortBy, page } = searchParams
 
   const region = await getRegion(countryCode)
 
@@ -31,11 +43,13 @@ export default async function Home(props: {
   return (
     <>
       <Hero />
-      <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul>
-      </div>
+      <AboutSection />
+      <Divider/>
+      <PaginatedProducts
+        sortBy={sortBy}
+        page={page ? parseInt(page) : 1}
+        countryCode={countryCode}
+      />
     </>
   )
 }
