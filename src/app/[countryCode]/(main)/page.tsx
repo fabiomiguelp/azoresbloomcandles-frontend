@@ -12,7 +12,7 @@ import Divider from "@modules/common/components/divider"
 export const metadata: Metadata = {
   title: "Azores Bloom Candles",
   description:
-    "Handcrafted artisan candles made with premium soy wax and natural fragrances. Each candle is hand-poured with love in California.",
+    "Handcrafted artisan candles made with premium soy wax and natural fragrances. Each candle is hand-poured with love in Azores.",
 }
 
 type Props = {

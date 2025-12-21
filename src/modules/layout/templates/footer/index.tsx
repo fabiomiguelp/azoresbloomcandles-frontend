@@ -27,7 +27,7 @@ export default async function Footer() {
             </LocalizedClientLink>
             <p className="text-sm text-stone-600 leading-relaxed mb-6">
               Handcrafted artisan candles made with premium soy wax and natural fragrances.
-              Each candle is hand-poured with love in California.
+              Each candle is hand-poured with love in Azores.
             </p>
 
             {/* Social Links */}

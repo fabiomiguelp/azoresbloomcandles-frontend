@@ -1,5 +1,7 @@
 import React, { Suspense } from "react"
 
+import CustomCandleSection from "@modules/products/components/custom-candle-section"
+
 import ImageGallery from "@modules/products/components/image-gallery"
 import ProductActions from "@modules/products/components/product-actions"
 import ProductOnboardingCta from "@modules/products/components/product-onboarding-cta"
@@ -27,6 +29,28 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 }) => {
   if (!product || !product.id) {
     return notFound()
+  }
+
+
+  const isCustomCandle = product.metadata?.is_custom_candle === true
+
+  if (isCustomCandle) {
+    return (
+      <>
+        <CustomCandleSection product={product} region={region} images={images} countryCode={countryCode} />
+        {/* Related products */}
+        <div
+          className="content-container my-16 small:my-32"
+          data-testid="related-products-container"
+        >
+
+
+          <Suspense fallback={<SkeletonRelatedProducts />}>
+          <RelatedProducts product={product} countryCode={countryCode} />
+        </Suspense>
+        </div>
+      </>
+    )
   }
 
   return (

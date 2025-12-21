@@ -13,14 +13,14 @@ const AboutSection = () => {
                 WELCOME TO THE
                 <br />
                 <span className="bg-gradient-to-r from-amber-700 to-amber-600 bg-clip-text text-transparent font-normal">
-                  WICKED CANDLES CO.
+                  Azores Bloom Candles
                 </span>
               </h2>
             </div>
 
             <div className="space-y-6 text-stone-600 leading-relaxed">
               <p>
-                At The Wicked Candles Co., we believe a candle is more than just a light source—it's an experience. Each of our premium candles is hand-poured with love and care in California, crafted from the finest ingredients to offer a perfect blend of aesthetics, captivating scents, and lasting ambiance.
+                At The Azores Bloom Candles, we believe a candle is more than just a light source—it's an experience. Each of our premium candles is hand-poured with love and care in Azores, crafted from the finest ingredients to offer a perfect blend of aesthetics, captivating scents, and lasting ambiance.
               </p>
 
               <div className="space-y-4">
@@ -52,10 +52,10 @@ const AboutSection = () => {
                   Our Mission
                 </h3>
                 <p>
-                  At The Wicked Candles Co., our mission is to offer more than just candles—we create an experience that transforms your environment. With our premium ingredients, beautiful packaging, and unforgettable scents, we aim to enhance your everyday moments, bringing serenity and joy to your home.
+                  At The Azores Bloom Candles, our mission is to offer more than just candles—we create an experience that transforms your environment. With our premium ingredients, beautiful packaging, and unforgettable scents, we aim to enhance your everyday moments, bringing serenity and joy to your home.
                 </p>
                 <p className="italic text-stone-500">
-                  Hand-poured right here in sunny California, every candle we make reflects our commitment to quality, craftsmanship, and sustainability. Join us in creating a space that feels as good as it smells.
+                  Hand-poured right here in sunny Azores, every candle we make reflects our commitment to quality, craftsmanship, and sustainability. Join us in creating a space that feels as good as it smells.
                 </p>
               </div>
             </div>
@@ -69,7 +69,7 @@ const AboutSection = () => {
                 <span className="text-sm font-medium text-amber-800">Premium Wax Blends</span>
               </div>
               <div className="px-6 py-3 bg-gradient-to-r from-amber-50 to-stone-50 rounded-full border border-amber-200">
-                <span className="text-sm font-medium text-amber-800">California Made</span>
+                <span className="text-sm font-medium text-amber-800">Azores Made</span>
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@ const AboutSection = () => {
             <div className="relative h-full rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src="/candle.png"
-                alt="Wicked Candles Co. handcrafted candles"
+                alt="Azores Bloom Candles handcrafted candles"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               {/* Overlay gradient */}
@@ -90,7 +90,7 @@ const AboutSection = () => {
               {/* Floating badge on image */}
               <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-lg">
                 <p className="text-sm text-stone-600">Hand-poured in</p>
-                <p className="text-xl font-semibold text-amber-700">California</p>
+                <p className="text-xl font-semibold text-amber-700">Azores</p>
               </div>
             </div>
           </div>

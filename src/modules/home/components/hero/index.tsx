@@ -63,10 +63,6 @@ const Hero = () => {
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           </button>
-
-          <button className="px-8 py-4 bg-white/80 backdrop-blur-sm text-stone-800 rounded-full font-medium border border-stone-200 hover:bg-white hover:shadow-lg transition-all duration-300 hover:scale-105">
-            Our Story
-          </button>
         </div>
 
         {/* Floating badges */}
@@ -80,13 +76,6 @@ const Hero = () => {
           <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
             <span className="text-amber-300">✓</span> Hand-Poured
           </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-stone-400 rounded-full flex justify-center">
-          <div className="w-1.5 h-3 bg-stone-400 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </div>
