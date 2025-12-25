@@ -64,6 +64,8 @@ export default async function PaginatedProducts({
     countryCode,
   })
 
+  console.log(products);
+
   const totalPages = Math.ceil(count / PRODUCT_LIMIT)
 
   return (
